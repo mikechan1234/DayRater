@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C43D6E01F4BDCFC00F907FB /* Rating+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6DE1F4BDCFC00F907FB /* Rating+CoreDataClass.swift */; };
+		4C43D6E11F4BDCFC00F907FB /* Rating+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6DF1F4BDCFC00F907FB /* Rating+CoreDataProperties.swift */; };
+		4C43D6E31F4BDEBF00F907FB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */; };
+		4C43D6E51F4BDF7700F907FB /* RatingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6E41F4BDF7700F907FB /* RatingHistoryViewController.swift */; };
+		4C43D6E71F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6E61F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift */; };
 		4CA52BFD1F469EB1008A2B3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA52BFC1F469EB1008A2B3C /* AppDelegate.swift */; };
-		4CA52BFF1F469EB1008A2B3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA52BFE1F469EB1008A2B3C /* ViewController.swift */; };
 		4CA52C021F469EB1008A2B3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA52C001F469EB1008A2B3C /* Main.storyboard */; };
 		4CA52C051F469EB1008A2B3C /* DayRater.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CA52C031F469EB1008A2B3C /* DayRater.xcdatamodeld */; };
 		4CA52C071F469EB1008A2B3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA52C061F469EB1008A2B3C /* Assets.xcassets */; };
@@ -16,9 +20,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C43D6DE1F4BDCFC00F907FB /* Rating+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4C43D6DF1F4BDCFC00F907FB /* Rating+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		4C43D6E41F4BDF7700F907FB /* RatingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHistoryViewController.swift; sourceTree = "<group>"; };
+		4C43D6E61F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHistoryViewControllerViewModel.swift; sourceTree = "<group>"; };
+		4C43D6EA1F4BE42300F907FB /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = SOURCE_ROOT; };
+		4C43D6EB1F4BE42300F907FB /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = SOURCE_ROOT; };
+		4C43D6EC1F4BE42300F907FB /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = SOURCE_ROOT; };
 		4CA52BF91F469EB1008A2B3C /* DayRater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayRater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA52BFC1F469EB1008A2B3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4CA52BFE1F469EB1008A2B3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4CA52C011F469EB1008A2B3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CA52C041F469EB1008A2B3C /* DayRater.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DayRater.xcdatamodel; sourceTree = "<group>"; };
 		4CA52C061F469EB1008A2B3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,6 +48,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C43D6E91F4BE41100F907FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C43D6EC1F4BE42300F907FB /* ReactiveCocoa.framework */,
+				4C43D6EA1F4BE42300F907FB /* ReactiveSwift.framework */,
+				4C43D6EB1F4BE42300F907FB /* Result.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		4CA52BF01F469EB1008A2B3C = {
 			isa = PBXGroup;
 			children = (
@@ -57,12 +78,17 @@
 			isa = PBXGroup;
 			children = (
 				4CA52BFC1F469EB1008A2B3C /* AppDelegate.swift */,
-				4CA52BFE1F469EB1008A2B3C /* ViewController.swift */,
+				4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */,
+				4C43D6E41F4BDF7700F907FB /* RatingHistoryViewController.swift */,
+				4C43D6E61F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift */,
 				4CA52C001F469EB1008A2B3C /* Main.storyboard */,
+				4C43D6DE1F4BDCFC00F907FB /* Rating+CoreDataClass.swift */,
+				4C43D6DF1F4BDCFC00F907FB /* Rating+CoreDataProperties.swift */,
 				4CA52C061F469EB1008A2B3C /* Assets.xcassets */,
 				4CA52C081F469EB1008A2B3C /* LaunchScreen.storyboard */,
 				4CA52C0B1F469EB1008A2B3C /* Info.plist */,
 				4CA52C031F469EB1008A2B3C /* DayRater.xcdatamodeld */,
+				4C43D6E91F4BE41100F907FB /* Frameworks */,
 			);
 			path = DayRater;
 			sourceTree = "<group>";
@@ -77,6 +103,7 @@
 				4CA52BF51F469EB1008A2B3C /* Sources */,
 				4CA52BF61F469EB1008A2B3C /* Frameworks */,
 				4CA52BF71F469EB1008A2B3C /* Resources */,
+				4C43D6ED1F4BE44100F907FB /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -94,11 +121,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Michael;
 				TargetAttributes = {
 					4CA52BF81F469EB1008A2B3C = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -134,14 +162,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4C43D6ED1F4BE44100F907FB /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveCocoa.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4CA52BF51F469EB1008A2B3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CA52BFF1F469EB1008A2B3C /* ViewController.swift in Sources */,
+				4C43D6E71F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift in Sources */,
+				4C43D6E31F4BDEBF00F907FB /* CoreDataManager.swift in Sources */,
 				4CA52BFD1F469EB1008A2B3C /* AppDelegate.swift in Sources */,
+				4C43D6E01F4BDCFC00F907FB /* Rating+CoreDataClass.swift in Sources */,
 				4CA52C051F469EB1008A2B3C /* DayRater.xcdatamodeld in Sources */,
+				4C43D6E51F4BDF7700F907FB /* RatingHistoryViewController.swift in Sources */,
+				4C43D6E11F4BDCFC00F907FB /* Rating+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +232,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -185,7 +242,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -208,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -227,7 +288,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -235,7 +298,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -252,7 +319,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -268,7 +335,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Michael.DayRater;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -280,7 +348,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Michael.DayRater;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -303,6 +372,7 @@
 				4CA52C101F469EB1008A2B3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
