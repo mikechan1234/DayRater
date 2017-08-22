@@ -17,8 +17,8 @@ extension Rating {
         return NSFetchRequest<Rating>(entityName: "Rating")
     }
 
-    @NSManaged public var dateAdded: NSDate?
-    @NSManaged public var ratingDescription: String?
+    @NSManaged public var dateAdded: NSDate
+    @NSManaged public var ratingDescription: String
     @NSManaged public var score: Int32
 
 }

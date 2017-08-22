@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C43D6E01F4BDCFC00F907FB /* Rating+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6DE1F4BDCFC00F907FB /* Rating+CoreDataClass.swift */; };
-		4C43D6E11F4BDCFC00F907FB /* Rating+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6DF1F4BDCFC00F907FB /* Rating+CoreDataProperties.swift */; };
 		4C43D6E31F4BDEBF00F907FB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */; };
 		4C43D6E51F4BDF7700F907FB /* RatingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6E41F4BDF7700F907FB /* RatingHistoryViewController.swift */; };
 		4C43D6E71F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6E61F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift */; };
@@ -17,11 +15,15 @@
 		4CA52C051F469EB1008A2B3C /* DayRater.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CA52C031F469EB1008A2B3C /* DayRater.xcdatamodeld */; };
 		4CA52C071F469EB1008A2B3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA52C061F469EB1008A2B3C /* Assets.xcassets */; };
 		4CA52C0A1F469EB1008A2B3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA52C081F469EB1008A2B3C /* LaunchScreen.storyboard */; };
+		4CC993BE1F4C06BB00D74E72 /* RatingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993BC1F4C06BB00D74E72 /* RatingHistoryTableViewCell.swift */; };
+		4CC993BF1F4C06BB00D74E72 /* RatingHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CC993BD1F4C06BB00D74E72 /* RatingHistoryTableViewCell.xib */; };
+		4CC993C11F4C09A100D74E72 /* RatingHistoryTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C01F4C09A100D74E72 /* RatingHistoryTableViewCellViewModel.swift */; };
+		4CC993CB1F4C0C3B00D74E72 /* Rating+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C91F4C0C3B00D74E72 /* Rating+CoreDataClass.swift */; };
+		4CC993CC1F4C0C3B00D74E72 /* Rating+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993CA1F4C0C3B00D74E72 /* Rating+CoreDataProperties.swift */; };
+		4CC993DA1F4C147E00D74E72 /* Rating+CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993D91F4C147E00D74E72 /* Rating+CoreDataFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C43D6DE1F4BDCFC00F907FB /* Rating+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4C43D6DF1F4BDCFC00F907FB /* Rating+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4C43D6E41F4BDF7700F907FB /* RatingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHistoryViewController.swift; sourceTree = "<group>"; };
 		4C43D6E61F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHistoryViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -35,6 +37,12 @@
 		4CA52C061F469EB1008A2B3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CA52C091F469EB1008A2B3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CA52C0B1F469EB1008A2B3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CC993BC1F4C06BB00D74E72 /* RatingHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		4CC993BD1F4C06BB00D74E72 /* RatingHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		4CC993C01F4C09A100D74E72 /* RatingHistoryTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHistoryTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		4CC993C91F4C0C3B00D74E72 /* Rating+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4CC993CA1F4C0C3B00D74E72 /* Rating+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4CC993D91F4C147E00D74E72 /* Rating+CoreDataFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataFunctions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,18 +87,46 @@
 			children = (
 				4CA52BFC1F469EB1008A2B3C /* AppDelegate.swift */,
 				4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */,
-				4C43D6E41F4BDF7700F907FB /* RatingHistoryViewController.swift */,
-				4C43D6E61F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift */,
+				4CC993DB1F4C16CA00D74E72 /* RatingHistoryViewController */,
 				4CA52C001F469EB1008A2B3C /* Main.storyboard */,
-				4C43D6DE1F4BDCFC00F907FB /* Rating+CoreDataClass.swift */,
-				4C43D6DF1F4BDCFC00F907FB /* Rating+CoreDataProperties.swift */,
 				4CA52C061F469EB1008A2B3C /* Assets.xcassets */,
 				4CA52C081F469EB1008A2B3C /* LaunchScreen.storyboard */,
 				4CA52C0B1F469EB1008A2B3C /* Info.plist */,
-				4CA52C031F469EB1008A2B3C /* DayRater.xcdatamodeld */,
+				4CC993C81F4C0BA100D74E72 /* Core Data */,
 				4C43D6E91F4BE41100F907FB /* Frameworks */,
 			);
 			path = DayRater;
+			sourceTree = "<group>";
+		};
+		4CC993BB1F4C069F00D74E72 /* RatingHistoryTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4CC993BC1F4C06BB00D74E72 /* RatingHistoryTableViewCell.swift */,
+				4CC993BD1F4C06BB00D74E72 /* RatingHistoryTableViewCell.xib */,
+				4CC993C01F4C09A100D74E72 /* RatingHistoryTableViewCellViewModel.swift */,
+			);
+			path = RatingHistoryTableViewCell;
+			sourceTree = "<group>";
+		};
+		4CC993C81F4C0BA100D74E72 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				4CC993C91F4C0C3B00D74E72 /* Rating+CoreDataClass.swift */,
+				4CC993CA1F4C0C3B00D74E72 /* Rating+CoreDataProperties.swift */,
+				4CC993D91F4C147E00D74E72 /* Rating+CoreDataFunctions.swift */,
+				4CA52C031F469EB1008A2B3C /* DayRater.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		4CC993DB1F4C16CA00D74E72 /* RatingHistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C43D6E41F4BDF7700F907FB /* RatingHistoryViewController.swift */,
+				4C43D6E61F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift */,
+				4CC993BB1F4C069F00D74E72 /* RatingHistoryTableViewCell */,
+			);
+			path = RatingHistoryViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA52C0A1F469EB1008A2B3C /* LaunchScreen.storyboard in Resources */,
+				4CC993BF1F4C06BB00D74E72 /* RatingHistoryTableViewCell.xib in Resources */,
 				4CA52C071F469EB1008A2B3C /* Assets.xcassets in Resources */,
 				4CA52C021F469EB1008A2B3C /* Main.storyboard in Resources */,
 			);
@@ -192,11 +229,14 @@
 			files = (
 				4C43D6E71F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift in Sources */,
 				4C43D6E31F4BDEBF00F907FB /* CoreDataManager.swift in Sources */,
+				4CC993BE1F4C06BB00D74E72 /* RatingHistoryTableViewCell.swift in Sources */,
 				4CA52BFD1F469EB1008A2B3C /* AppDelegate.swift in Sources */,
-				4C43D6E01F4BDCFC00F907FB /* Rating+CoreDataClass.swift in Sources */,
 				4CA52C051F469EB1008A2B3C /* DayRater.xcdatamodeld in Sources */,
+				4CC993C11F4C09A100D74E72 /* RatingHistoryTableViewCellViewModel.swift in Sources */,
+				4CC993CB1F4C0C3B00D74E72 /* Rating+CoreDataClass.swift in Sources */,
+				4CC993CC1F4C0C3B00D74E72 /* Rating+CoreDataProperties.swift in Sources */,
 				4C43D6E51F4BDF7700F907FB /* RatingHistoryViewController.swift in Sources */,
-				4C43D6E11F4BDCFC00F907FB /* Rating+CoreDataProperties.swift in Sources */,
+				4CC993DA1F4C147E00D74E72 /* Rating+CoreDataFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,8 @@ import UIKit
 
 class RatingHistoryViewController: UIViewController {
 
+    let viewModel = RatingHistoryViewControllerViewModel(coreData: .shared)
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -25,8 +27,11 @@ class RatingHistoryViewController: UIViewController {
     
     fileprivate func setupViews() {
         
+        tableView.register(UINib(nibName: RatingHistoryTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: RatingHistoryTableViewCell.identifier)
+        
         tableView.dataSource = self
         tableView.delegate = self
+        
         
     }
 
@@ -34,15 +39,23 @@ class RatingHistoryViewController: UIViewController {
 
 extension RatingHistoryViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+    
+        return viewModel.numberOfSections()
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 0
+        return viewModel.numberOfItems(for: section)
     
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: RatingHistoryTableViewCell.identifier, for: indexPath) as! RatingHistoryTableViewCell
+        
+        cell.configure(using: viewModel.cellContents(for: indexPath))
         
         return cell
         
