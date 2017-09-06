@@ -14,11 +14,12 @@ class RatingHistoryViewControllerViewModel: NSObject {
     fileprivate var fetchedResultsController: NSFetchedResultsController<Rating>!
     fileprivate var ratings: [IndexPath : RatingHistoryTableViewCellContents] = [:]
     
-    weak var coreDataManager: CoreDataManager?
+    unowned var coreDataManager: CoreDataManager
     
     init(coreData: CoreDataManager) {
-        super.init()
         coreDataManager = coreData
+        
+        super.init()
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: Rating.dateSortedFetchRequest(), managedObjectContext: coreData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
@@ -72,6 +73,20 @@ extension RatingHistoryViewControllerViewModel {
     
 }
 
+
+// MARK: - ViewModel factory
+extension RatingHistoryViewControllerViewModel {
+    
+    func makeRatingComposerViewModel() -> RatingComposerViewControllerViewModel {
+        
+        let viewModel = RatingComposerViewControllerViewModel(coreDataManager: coreDataManager)
+        
+        return viewModel
+        
+    }
+    
+}
+
 extension RatingHistoryViewControllerViewModel: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -83,7 +98,6 @@ extension RatingHistoryViewControllerViewModel: NSFetchedResultsControllerDelega
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
         
     }
     

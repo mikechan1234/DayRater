@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1556DC1F5FF8D8005005CC /* RatingComposerViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1556DB1F5FF8D8005005CC /* RatingComposerViewControllerViewModel.swift */; };
+		4C348AD01F5FE1B60019669D /* RatingComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C348ACF1F5FE1B60019669D /* RatingComposerViewController.swift */; };
+		4C348AD21F5FE4F80019669D /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43D6EC1F4BE42300F907FB /* ReactiveCocoa.framework */; };
+		4C348AD31F5FE4F80019669D /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43D6EA1F4BE42300F907FB /* ReactiveSwift.framework */; };
+		4C348AD41F5FE4F80019669D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43D6EB1F4BE42300F907FB /* Result.framework */; };
 		4C43D6E31F4BDEBF00F907FB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */; };
 		4C43D6E51F4BDF7700F907FB /* RatingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6E41F4BDF7700F907FB /* RatingHistoryViewController.swift */; };
 		4C43D6E71F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D6E61F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift */; };
@@ -24,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C1556DB1F5FF8D8005005CC /* RatingComposerViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingComposerViewControllerViewModel.swift; sourceTree = "<group>"; };
+		4C348ACF1F5FE1B60019669D /* RatingComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingComposerViewController.swift; sourceTree = "<group>"; };
 		4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4C43D6E41F4BDF7700F907FB /* RatingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHistoryViewController.swift; sourceTree = "<group>"; };
 		4C43D6E61F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHistoryViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -50,12 +57,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C348AD41F5FE4F80019669D /* Result.framework in Frameworks */,
+				4C348AD21F5FE4F80019669D /* ReactiveCocoa.framework in Frameworks */,
+				4C348AD31F5FE4F80019669D /* ReactiveSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C348AD11F5FE1BD0019669D /* RatingComposerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C348ACF1F5FE1B60019669D /* RatingComposerViewController.swift */,
+				4C1556DB1F5FF8D8005005CC /* RatingComposerViewControllerViewModel.swift */,
+			);
+			path = RatingComposerViewController;
+			sourceTree = "<group>";
+		};
 		4C43D6E91F4BE41100F907FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +106,7 @@
 			children = (
 				4CA52BFC1F469EB1008A2B3C /* AppDelegate.swift */,
 				4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */,
+				4C348AD11F5FE1BD0019669D /* RatingComposerViewController */,
 				4CC993DB1F4C16CA00D74E72 /* RatingHistoryViewController */,
 				4CA52C001F469EB1008A2B3C /* Main.storyboard */,
 				4CA52C061F469EB1008A2B3C /* Assets.xcassets */,
@@ -228,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C43D6E71F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift in Sources */,
+				4C348AD01F5FE1B60019669D /* RatingComposerViewController.swift in Sources */,
 				4C43D6E31F4BDEBF00F907FB /* CoreDataManager.swift in Sources */,
 				4CC993BE1F4C06BB00D74E72 /* RatingHistoryTableViewCell.swift in Sources */,
 				4CA52BFD1F469EB1008A2B3C /* AppDelegate.swift in Sources */,
@@ -236,6 +257,7 @@
 				4CC993CB1F4C0C3B00D74E72 /* Rating+CoreDataClass.swift in Sources */,
 				4CC993CC1F4C0C3B00D74E72 /* Rating+CoreDataProperties.swift in Sources */,
 				4C43D6E51F4BDF7700F907FB /* RatingHistoryViewController.swift in Sources */,
+				4C1556DC1F5FF8D8005005CC /* RatingComposerViewControllerViewModel.swift in Sources */,
 				4CC993DA1F4C147E00D74E72 /* Rating+CoreDataFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +393,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DayRater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Michael.DayRater;
@@ -384,6 +410,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DayRater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Michael.DayRater;

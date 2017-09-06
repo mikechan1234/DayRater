@@ -8,31 +8,65 @@
 
 import UIKit
 
+import ReactiveCocoa
+import ReactiveSwift
+import Result
+
 class RatingHistoryViewController: UIViewController {
 
     let viewModel = RatingHistoryViewControllerViewModel(coreData: .shared)
     
+    @IBOutlet weak var composeBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupViews()
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "toRatingComposer", let destinationViewController = segue.destination as? RatingComposerViewController, let viewModel = sender as? RatingComposerViewControllerViewModel {
+            
+            destinationViewController.viewModel = viewModel
+            
+        }
+        
     }
     
     fileprivate func setupViews() {
+        
+        title = "Ratings"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        composeBarButtonItem.reactive.pressed = CocoaAction(Action<Void, Void, NoError>(execute: {[weak self] () -> SignalProducer<Void, NoError> in
+            
+            return SignalProducer<Void, NoError>({ (observer, lifetime) in
+              
+                guard let weakSelf = self else {
+                    
+                    return
+                    
+                }
+                
+                let viewModel = weakSelf.viewModel.makeRatingComposerViewModel()
+                
+                weakSelf.performSegue(withIdentifier: "toRatingComposer", sender: viewModel)
+                
+                observer.sendCompleted()
+                
+            })
+            
+        }))
+        
         
         tableView.register(UINib(nibName: RatingHistoryTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: RatingHistoryTableViewCell.identifier)
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-        
     }
 
 }
