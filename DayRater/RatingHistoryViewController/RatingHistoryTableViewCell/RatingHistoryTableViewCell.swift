@@ -54,6 +54,9 @@ extension RatingHistoryTableViewCell {
         } else {
             
             descriptionBottomLabel.constant = 0
+            descriptionLabel.text = ""
+            
+            contentView.setNeedsLayout()
             
         }
         
