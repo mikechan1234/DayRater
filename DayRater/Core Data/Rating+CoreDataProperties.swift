@@ -2,7 +2,7 @@
 //  Rating+CoreDataProperties.swift
 //  DayRater
 //
-//  Created by Michael on 22/8/2017.
+//  Created by Michael on 7/9/2017.
 //  Copyright © 2017 Michael. All rights reserved.
 //
 //
@@ -18,7 +18,7 @@ extension Rating {
     }
 
     @NSManaged public var dateAdded: NSDate
-    @NSManaged public var ratingDescription: String
-    @NSManaged public var score: Int32
+    @NSManaged public var ratingDescription: String?
+    @NSManaged public var score: Int64
 
 }

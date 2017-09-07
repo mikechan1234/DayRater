@@ -32,17 +32,29 @@ class RatingComposerViewController: UIViewController {
     
     fileprivate func setupViews() {
         
-        title = "Compose"
+        title = "Rate Your Day"
         navigationItem.largeTitleDisplayMode = .never
         
-        saveBarButtonItem.reactive.pressed = CocoaAction(Action<Void, Void, NoError>(execute: { () -> SignalProducer<Void, NoError> in
-            
-            return SignalProducer<Void, NoError>({ (observer, lifetime) in
-                
-                observer.sendCompleted()
-                
+        saveBarButtonItem.reactive.pressed = CocoaAction(Action<Void, Void, NoError>(execute: {[weak self] () -> SignalProducer<Void, NoError> in
+
+            guard let weakSelf = self else {
+
+                return SignalProducer.empty
+
+            }
+
+            return weakSelf.viewModel.saveRating().flatMap(.merge, {[weak self] (value) -> SignalProducer<Void, NoError> in
+
+                guard let weakSelf = self else {
+
+                    return SignalProducer.empty
+
+                }
+
+                return weakSelf.handleSaveRating(from: value)
+
             })
-            
+
         }))
         
         collectionView.dataSource = self
@@ -53,20 +65,20 @@ class RatingComposerViewController: UIViewController {
         negativeButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
             self?.viewModel.selectedRating.value = 0
-            
+
         }
-        
+
         positiveButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
-            
+
             self?.viewModel.selectedRating.value = 1
-            
+
         }
 
     }
     
     fileprivate func bindViewModel() {
         
-        saveBarButtonItem.reactive.isEnabled <~ viewModel.selectedRatingSignal
+        saveBarButtonItem.reactive.isEnabled <~ viewModel.ratingValidation
         
     }
 
@@ -91,6 +103,33 @@ extension RatingComposerViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
         return cell
+        
+    }
+    
+}
+
+extension RatingComposerViewController {
+    
+    fileprivate func handleSaveRating(from value: Bool) -> SignalProducer<Void, NoError> {
+        
+        return SignalProducer<Void, NoError>({[weak self] (observer, lifetime) in
+            
+            if !value {
+                
+                let alertController = UIAlertController(title: "Oops", message: "There was an issue saving your rating", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                
+                self?.present(alertController, animated: true, completion: nil)
+                
+            } else {
+                
+                self?.navigationController?.popToRootViewController(animated: true)
+                
+            }
+            
+            observer.sendCompleted()
+            
+        }).observe(on: UIScheduler())
         
     }
     

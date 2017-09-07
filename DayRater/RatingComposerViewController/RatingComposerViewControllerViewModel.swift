@@ -6,23 +6,31 @@
 //  Copyright © 2017 Michael. All rights reserved.
 //
 
+import CoreData
+
 import ReactiveSwift
 import Result
 
 struct RatingComposerViewControllerViewModel {
     
-    unowned var coreDataManager: CoreDataManager
+    weak var coreDataManager: CoreDataManager?
     
     var selectedRating: MutableProperty<Int?> = MutableProperty<Int?>(nil)
-    var selectedRatingSignal: SignalProducer<Bool, NoError>!
+    var ratingValidation: Property<Bool>!
     
     init(coreDataManager: CoreDataManager) {
         
         self.coreDataManager = coreDataManager
         
-        selectedRatingSignal = selectedRating.producer.map({ (value) -> Bool in
+        ratingValidation = selectedRating.map({ (value) -> Bool in
             
-            return value != nil ? true : false
+            guard value != nil else {
+            
+                return false
+            
+            }
+            
+            return true
             
         })
         
@@ -30,11 +38,40 @@ struct RatingComposerViewControllerViewModel {
     
 }
 
+// MARK: - Public facing functions
 extension RatingComposerViewControllerViewModel {
     
-    func saveRating() -> SignalProducer<Void, NoError> {
+    func saveRating() -> SignalProducer<Bool, NoError> {
         
-        return SignalProducer.empty
+        let rating = Rating.make(from: coreDataManager!.persistentContainer.viewContext, score: selectedRating.value!)
+        
+        return store(rating, using: coreDataManager!.persistentContainer.viewContext)
+        
+    }
+    
+}
+
+extension RatingComposerViewControllerViewModel {
+    
+    fileprivate func store(_ rating: Rating, using context: NSManagedObjectContext) -> SignalProducer<Bool, NoError> {
+        
+        return SignalProducer<Bool, NoError> { (observer, lifetime) in
+            
+            do {
+                
+                try context.save()
+                
+                observer.send(value: true)
+                
+            } catch {
+                
+                observer.send(value: false)
+                
+            }
+            
+            observer.sendCompleted()
+            
+        }
         
     }
     
