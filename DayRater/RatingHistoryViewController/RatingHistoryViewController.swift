@@ -23,6 +23,7 @@ class RatingHistoryViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        bindViewModel()
         
     }
     
@@ -67,6 +68,47 @@ class RatingHistoryViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+    
+    }
+    
+    fileprivate func bindViewModel() {
+        
+        viewModel.willChangeContentSignal.observeValues { [unowned self] in
+            
+            self.tableView.beginUpdates()
+        
+        }
+        
+        viewModel.didChangeContentSignal.observeValues { [unowned self] in
+            
+            self.tableView.endUpdates()
+            
+        }
+        
+        viewModel.didChangeObjectSignal.observeValues { [unowned self] (object, atIndexPath, type, newIndexPath) in
+            
+            switch type {
+                
+            case .delete:
+                self.tableView.deleteRows(at: [atIndexPath!], with: .automatic)
+                break
+                
+            case .insert:
+                self.tableView.insertRows(at: [newIndexPath!], with: .automatic)
+                break
+                
+            case .move:
+                self.tableView.moveRow(at: atIndexPath!, to: newIndexPath!)
+                break
+                
+            case .update:
+                self.tableView.reloadRows(at: [atIndexPath!], with: .automatic)
+                break
+                
+            }
+            
+        }
+        
     }
 
 }

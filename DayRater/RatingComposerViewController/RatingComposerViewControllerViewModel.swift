@@ -24,13 +24,7 @@ struct RatingComposerViewControllerViewModel {
         
         ratingValidation = selectedRating.map({ (value) -> Bool in
             
-            guard value != nil else {
-            
-                return false
-            
-            }
-            
-            return true
+            return value != nil ? true : false
             
         })
         
@@ -50,6 +44,8 @@ extension RatingComposerViewControllerViewModel {
     }
     
 }
+
+// MARK: - Storing to Core Data functions
 
 extension RatingComposerViewControllerViewModel {
     

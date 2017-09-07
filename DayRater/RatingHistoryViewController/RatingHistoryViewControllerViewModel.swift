@@ -9,12 +9,20 @@
 import CoreData
 import Foundation
 
+import ReactiveSwift
+import Result
+
 class RatingHistoryViewControllerViewModel: NSObject {
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<Rating>!
     fileprivate var ratings: [IndexPath : RatingHistoryTableViewCellContents] = [:]
     
-    unowned var coreDataManager: CoreDataManager
+    fileprivate unowned var coreDataManager: CoreDataManager
+    
+    let (willChangeContentSignal, willChangeContentObserver) = Signal<Void, NoError>.pipe()
+    let (didChangeContentSignal, didChangeContentObserver) = Signal<Void, NoError>.pipe()
+    let (didChangeObjectSignal, didChangeObjectObserver) = Signal<(didChangeObject: Any, atIndexPath: IndexPath?, forType: NSFetchedResultsChangeType, newIndexPath: IndexPath?), NoError>.pipe()
+    
     
     init(coreData: CoreDataManager) {
         coreDataManager = coreData
@@ -31,6 +39,14 @@ class RatingHistoryViewControllerViewModel: NSObject {
         } catch {
             
         }
+        
+    }
+    
+    deinit {
+        
+        willChangeContentObserver.sendCompleted()
+        didChangeContentObserver.sendCompleted()
+        didChangeObjectObserver.sendCompleted()
         
     }
     
@@ -91,13 +107,21 @@ extension RatingHistoryViewControllerViewModel: NSFetchedResultsControllerDelega
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
+        willChangeContentObserver.send(value: ())
+    
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
+        didChangeContentObserver.send(value: ())
+        
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        ratings.removeAll()
+        
+        didChangeObjectObserver.send(value: (anObject, indexPath, type, newIndexPath))
         
     }
     

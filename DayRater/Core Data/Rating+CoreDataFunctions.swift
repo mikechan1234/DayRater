@@ -14,7 +14,7 @@ extension Rating {
     class func dateSortedFetchRequest() -> NSFetchRequest<Rating> {
         
         let aFetchRequest: NSFetchRequest<Rating> = fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
         
         aFetchRequest.sortDescriptors = [sortDescriptor]
         
