@@ -11,6 +11,25 @@ import Foundation
 
 extension Rating {
     
+    public var sectionIdentifier: String? {
+        
+        get {
+            
+            willAccessValue(forKey: "dateAdded")
+            
+            let dateComponents = Calendar.current.dateComponents([.month, .year], from: dateAdded)
+                        
+            didAccessValue(forKey: "dateAdded")
+            return "\(dateComponents.year! * 1000 + dateComponents.month!)"
+            
+        }
+        
+    }
+
+}
+
+extension Rating {
+    
     class func dateSortedFetchRequest() -> NSFetchRequest<Rating> {
         
         let aFetchRequest: NSFetchRequest<Rating> = fetchRequest()
@@ -26,7 +45,7 @@ extension Rating {
         
         let rating = Rating(context: objectContext)
         
-        rating.dateAdded = date as NSDate
+        rating.dateAdded = date
         rating.ratingDescription = description
         rating.score = Int64(score)
         

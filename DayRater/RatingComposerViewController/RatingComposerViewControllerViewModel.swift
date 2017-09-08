@@ -61,6 +61,7 @@ extension RatingComposerViewControllerViewModel {
                 
             } catch {
                 
+                print(error as NSError)
                 observer.send(value: false)
                 
             }

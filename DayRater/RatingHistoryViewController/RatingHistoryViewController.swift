@@ -17,7 +17,7 @@ class RatingHistoryViewController: UIViewController {
     let viewModel = RatingHistoryViewControllerViewModel(coreData: .shared)
     
     @IBOutlet weak var composeBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,46 +63,52 @@ class RatingHistoryViewController: UIViewController {
             
         }))
         
-        
-        tableView.register(UINib(nibName: RatingHistoryTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: RatingHistoryTableViewCell.identifier)
-        
-        tableView.dataSource = self
-        tableView.delegate = self
+        collectionView.register(UINib(nibName: "RatingHistoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RatingHistoryCollectionViewCell")
+        collectionView.register(UINib(nibName: "RatingHistoryHeaderCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "RatingHistoryHeaderCollectionReusableView")
+        collectionView.dataSource = self
+        collectionView.delegate = self
     
     }
     
     fileprivate func bindViewModel() {
-        
-        viewModel.willChangeContentSignal.observeValues { [unowned self] in
-            
-            self.tableView.beginUpdates()
-        
-        }
-        
-        viewModel.didChangeContentSignal.observeValues { [unowned self] in
-            
-            self.tableView.endUpdates()
-            
-        }
         
         viewModel.didChangeObjectSignal.observeValues { [unowned self] (object, atIndexPath, type, newIndexPath) in
             
             switch type {
                 
             case .delete:
-                self.tableView.deleteRows(at: [atIndexPath!], with: .automatic)
+                self.collectionView.deleteItems(at: [atIndexPath!])
                 break
                 
             case .insert:
-                self.tableView.insertRows(at: [newIndexPath!], with: .automatic)
+                self.collectionView.insertItems(at: [newIndexPath!])
                 break
                 
             case .move:
-                self.tableView.moveRow(at: atIndexPath!, to: newIndexPath!)
+                self.collectionView.moveItem(at: atIndexPath!, to: newIndexPath!)
                 break
                 
             case .update:
-                self.tableView.reloadRows(at: [atIndexPath!], with: .automatic)
+                self.collectionView.reloadItems(at: [atIndexPath!])
+                break
+                
+            }
+            
+        }
+        
+        viewModel.didChangeSectionInfoSignal.observeValues {[unowned self] (sectionInfo, sectionIndex, type) in
+            
+            switch type {
+                
+            case .insert:
+                self.collectionView.insertSections(IndexSet(integer: sectionIndex))
+                break
+            
+            case .delete:
+                self.collectionView.deleteSections(IndexSet(integer: sectionIndex))
+                break
+                
+            default:
                 break
                 
             }
@@ -113,23 +119,23 @@ class RatingHistoryViewController: UIViewController {
 
 }
 
-extension RatingHistoryViewController: UITableViewDataSource {
+extension RatingHistoryViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
         return viewModel.numberOfSections()
         
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return viewModel.numberOfItems(for: section)
-    
+        
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: RatingHistoryTableViewCell.identifier, for: indexPath) as! RatingHistoryTableViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RatingHistoryCollectionViewCell", for: indexPath) as! RatingHistoryCollectionViewCell
         
         cell.configure(using: viewModel.cellContents(for: indexPath))
         
@@ -137,13 +143,35 @@ extension RatingHistoryViewController: UITableViewDataSource {
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "RatingHistoryHeaderCollectionReusableView", for: indexPath) as! RatingHistoryHeaderCollectionReusableView
+        
+        header.titleLabel.text = viewModel.sectionTitle(for: indexPath.section)
+        
+        return header
+        
+    }
+    
 }
 
-extension RatingHistoryViewController: UITableViewDelegate {
+extension RatingHistoryViewController: UICollectionViewDelegateFlowLayout {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        return CGSize(width: collectionView.bounds.size.width, height: 50)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: (collectionView.bounds.size.width - 20) / 3, height: (collectionView.bounds.size.width - 20) / 3)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 10
         
     }
     

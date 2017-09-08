@@ -15,21 +15,22 @@ import Result
 class RatingHistoryViewControllerViewModel: NSObject {
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<Rating>!
-    fileprivate var ratings: [IndexPath : RatingHistoryTableViewCellContents] = [:]
+    fileprivate var ratings: [IndexPath : RatingHistoryCellContents] = [:]
     
+    fileprivate var currentCalendar: Calendar
     fileprivate unowned var coreDataManager: CoreDataManager
     
-    let (willChangeContentSignal, willChangeContentObserver) = Signal<Void, NoError>.pipe()
-    let (didChangeContentSignal, didChangeContentObserver) = Signal<Void, NoError>.pipe()
     let (didChangeObjectSignal, didChangeObjectObserver) = Signal<(didChangeObject: Any, atIndexPath: IndexPath?, forType: NSFetchedResultsChangeType, newIndexPath: IndexPath?), NoError>.pipe()
+    let (didChangeSectionInfoSignal, didChangeSectionInfoObserver) = Signal<(sectionInfo: NSFetchedResultsSectionInfo, atIndex: Int, forType: NSFetchedResultsChangeType), NoError>.pipe()
     
     
-    init(coreData: CoreDataManager) {
+    init(coreData: CoreDataManager, calendar: Calendar = Calendar.current) {
         coreDataManager = coreData
+        currentCalendar = calendar
         
         super.init()
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: Rating.dateSortedFetchRequest(), managedObjectContext: coreData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: Rating.dateSortedFetchRequest(), managedObjectContext: coreData.persistentContainer.viewContext, sectionNameKeyPath: "sectionIdentifier", cacheName: nil)
         fetchedResultsController.delegate = self
         
         do {
@@ -44,9 +45,8 @@ class RatingHistoryViewControllerViewModel: NSObject {
     
     deinit {
         
-        willChangeContentObserver.sendCompleted()
-        didChangeContentObserver.sendCompleted()
         didChangeObjectObserver.sendCompleted()
+        didChangeSectionInfoObserver.sendCompleted()
         
     }
     
@@ -68,7 +68,7 @@ extension RatingHistoryViewControllerViewModel {
         
     }
     
-    func cellContents(for indexPath: IndexPath) -> RatingHistoryTableViewCellContents {
+    func cellContents(for indexPath: IndexPath) -> RatingHistoryCellContents {
         
         if let viewModel = ratings[indexPath] {
             
@@ -77,7 +77,7 @@ extension RatingHistoryViewControllerViewModel {
         } else {
             
             let rating = fetchedResultsController.object(at: indexPath)
-            let viewModel = RatingHistoryTableViewCellViewModel(rating: rating)
+            let viewModel = RatingHistoryCollectionViewCellViewModel(rating)
             
             ratings[indexPath] = viewModel
             
@@ -85,6 +85,31 @@ extension RatingHistoryViewControllerViewModel {
             
         }
         
+    }
+    
+    func sectionTitle(for section: Int) -> String? {
+                
+        if let title = fetchedResultsController.sections?[section].name, let numericSectionValue = Int(title) {
+            
+            let year = numericSectionValue / 1000
+            let month = numericSectionValue - (year * 1000)
+            
+            var dateComponents = DateComponents()
+            dateComponents.year = year
+            dateComponents.month = month
+            
+            if let date = currentCalendar.date(from: dateComponents) {
+                
+                return DateFormatter.monthYearFormatter().string(from: date)
+                
+            }
+            
+            return nil
+        
+        }
+        
+        return nil
+            
     }
     
 }
@@ -107,13 +132,9 @@ extension RatingHistoryViewControllerViewModel: NSFetchedResultsControllerDelega
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
-        willChangeContentObserver.send(value: ())
-    
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
-        didChangeContentObserver.send(value: ())
         
     }
     
@@ -122,6 +143,14 @@ extension RatingHistoryViewControllerViewModel: NSFetchedResultsControllerDelega
         ratings.removeAll()
         
         didChangeObjectObserver.send(value: (anObject, indexPath, type, newIndexPath))
+        
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        ratings.removeAll()
+        
+        didChangeSectionInfoObserver.send(value: (sectionInfo, sectionIndex, type))
         
     }
     
