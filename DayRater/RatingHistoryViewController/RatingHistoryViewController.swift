@@ -67,6 +67,10 @@ class RatingHistoryViewController: UIViewController {
         collectionView.register(UINib(nibName: "RatingHistoryHeaderCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "RatingHistoryHeaderCollectionReusableView")
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        collectionView.collectionViewLayout = flowLayout
     
     }
     
@@ -164,7 +168,7 @@ extension RatingHistoryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+                
         return CGSize(width: (collectionView.bounds.size.width - 20) / 3, height: (collectionView.bounds.size.width - 20) / 3)
         
     }

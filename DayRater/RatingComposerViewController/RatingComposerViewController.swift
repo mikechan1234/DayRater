@@ -18,10 +18,12 @@ class RatingComposerViewController: UIViewController {
     
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var containerView: UIView!
+    var collectionView: UICollectionView!
+    var ratingSelectorView: RatingComposerSelectorView = RatingComposerSelectorView.viewFor(nibName: "RatingComposerSelectorView")
+    var descriptionTextView: RatingComposerTextView = RatingComposerTextView.viewFor(nibName: "RatingComposerTextView")
     
-    @IBOutlet weak var positiveButton: UIButton!
-    @IBOutlet weak var negativeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,18 +59,24 @@ class RatingComposerViewController: UIViewController {
 
         }))
         
+        scrollView.isScrollEnabled = false
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         collectionView.dataSource = self
         
-        negativeButton.setTitle("👎", for: .normal)
-        positiveButton.setTitle("👍", for: .normal)
+        containerView.layout(views: [collectionView, ratingSelectorView, descriptionTextView], for: .vertical, sidePadding: 5)
         
-        negativeButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
+        ratingSelectorView.negativeButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
             self?.viewModel.selectedRating.value = 0
 
         }
 
-        positiveButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
+        ratingSelectorView.positiveButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
             self?.viewModel.selectedRating.value = 1
 
@@ -105,6 +113,12 @@ extension RatingComposerViewController: UICollectionViewDataSource {
         return cell
         
     }
+    
+}
+
+extension RatingComposerViewController: UICollectionViewDelegateFlowLayout {
+    
+    
     
 }
 

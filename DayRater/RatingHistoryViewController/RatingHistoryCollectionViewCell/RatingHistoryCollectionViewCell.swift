@@ -26,6 +26,8 @@ class RatingHistoryCollectionViewCell: UICollectionViewCell {
         
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.cornerRadius = 3
+        contentView.layer.masksToBounds = true
         
     }
 
@@ -36,7 +38,7 @@ extension RatingHistoryCollectionViewCell {
     func configure(using content: RatingHistoryCellContents) {
         
         scoreLabel.text = content.score == 0 ? "👎" : "👍"
-        dateLabel.text = content.datePosted.description
+        dateLabel.text = "\(Calendar.dateComponents(from: content.datePosted).day!)"
         
     }
     

@@ -24,3 +24,13 @@ extension DateFormatter {
     }
     
 }
+
+extension Calendar {
+    
+    static func dateComponents(from date: Date, using calendar: Calendar = .current) -> DateComponents {
+        
+        return calendar.dateComponents([.day, .month, .year], from: date)
+        
+    }
+    
+}

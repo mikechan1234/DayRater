@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3ZF-uA-SgN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3ZF-uA-SgN">
                                 <rect key="frame" x="10" y="64" width="300" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DCh-om-itC">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
@@ -54,48 +54,35 @@
         <!--Rating Composer View Controller-->
         <scene sceneID="iLK-WX-9SZ">
             <objects>
-                <viewController id="yIb-EG-UVN" customClass="RatingComposerViewController" customModule="DayRater" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="yIb-EG-UVN" customClass="RatingComposerViewController" customModule="DayRater" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X4a-kj-mT0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-ON-pfD">
-                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fzs-f5-Guf">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nY6-Bh-2sL">
-                                <rect key="frame" x="5" y="518" width="310" height="50"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtO-kR-7zs">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j23-Dk-Yvc">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgN-RW-Qah">
-                                        <rect key="frame" x="160" y="0.0" width="150" height="50"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="504" translatesAutoresizingMaskIntoConstraints="NO" id="w8T-v6-adN">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="NjX-bJ-vzJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="w8T-v6-adN" secondAttribute="bottom" id="QHM-MD-YGi"/>
+                                    <constraint firstItem="w8T-v6-adN" firstAttribute="top" secondItem="XtO-kR-7zs" secondAttribute="top" id="VOc-Mb-vs0"/>
+                                    <constraint firstItem="w8T-v6-adN" firstAttribute="width" secondItem="XtO-kR-7zs" secondAttribute="width" id="dFz-Ee-Ucf"/>
+                                    <constraint firstItem="w8T-v6-adN" firstAttribute="leading" secondItem="XtO-kR-7zs" secondAttribute="leading" id="nWZ-ia-ddl"/>
+                                    <constraint firstAttribute="trailing" secondItem="w8T-v6-adN" secondAttribute="trailing" id="zo5-Jq-EVc"/>
                                 </constraints>
-                            </stackView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nY6-Bh-2sL" firstAttribute="leading" secondItem="3Nc-CF-zlM" secondAttribute="leading" constant="5" id="5mO-VO-GQ1"/>
-                            <constraint firstItem="3Nc-CF-zlM" firstAttribute="bottom" secondItem="nY6-Bh-2sL" secondAttribute="bottom" id="9be-g1-kGg"/>
-                            <constraint firstItem="6eQ-ON-pfD" firstAttribute="top" secondItem="3Nc-CF-zlM" secondAttribute="top" id="Bcw-kI-PPs"/>
-                            <constraint firstItem="3Nc-CF-zlM" firstAttribute="trailing" secondItem="6eQ-ON-pfD" secondAttribute="trailing" id="LWu-V2-Ojy"/>
-                            <constraint firstItem="3Nc-CF-zlM" firstAttribute="trailing" secondItem="nY6-Bh-2sL" secondAttribute="trailing" constant="5" id="avA-iS-qnP"/>
-                            <constraint firstItem="nY6-Bh-2sL" firstAttribute="top" secondItem="6eQ-ON-pfD" secondAttribute="bottom" id="myN-Rq-YsA"/>
-                            <constraint firstItem="6eQ-ON-pfD" firstAttribute="leading" secondItem="3Nc-CF-zlM" secondAttribute="leading" id="uA1-86-09m"/>
+                            <constraint firstItem="w8T-v6-adN" firstAttribute="height" secondItem="X4a-kj-mT0" secondAttribute="height" id="9Of-bt-Rvp"/>
+                            <constraint firstItem="3Nc-CF-zlM" firstAttribute="leading" secondItem="XtO-kR-7zs" secondAttribute="leading" id="Nzt-NJ-DTS"/>
+                            <constraint firstItem="3Nc-CF-zlM" firstAttribute="top" secondItem="XtO-kR-7zs" secondAttribute="top" id="P5f-12-DEj"/>
+                            <constraint firstItem="XtO-kR-7zs" firstAttribute="bottom" secondItem="3Nc-CF-zlM" secondAttribute="bottom" id="WgO-sS-rqJ"/>
+                            <constraint firstItem="XtO-kR-7zs" firstAttribute="trailing" secondItem="3Nc-CF-zlM" secondAttribute="trailing" id="Xa9-PC-wFp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Nc-CF-zlM"/>
                     </view>
@@ -103,10 +90,9 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="9cy-iT-E4B"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="6eQ-ON-pfD" id="ox8-fF-a9P"/>
-                        <outlet property="negativeButton" destination="j23-Dk-Yvc" id="yjJ-n4-qY3"/>
-                        <outlet property="positiveButton" destination="cgN-RW-Qah" id="wu7-dD-OaG"/>
+                        <outlet property="containerView" destination="w8T-v6-adN" id="oeM-uZ-b9P"/>
                         <outlet property="saveBarButtonItem" destination="9cy-iT-E4B" id="u7F-LQ-P3j"/>
+                        <outlet property="scrollView" destination="XtO-kR-7zs" id="0xO-lA-f3M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbD-Ep-2Sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
