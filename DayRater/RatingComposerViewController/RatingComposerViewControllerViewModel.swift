@@ -17,6 +17,7 @@ struct RatingComposerViewControllerViewModel {
     
     var selectedRating: MutableProperty<Int?> = MutableProperty<Int?>(nil)
     var ratingValidation: Property<Bool>!
+    var ratingDescription: MutableProperty<String?> = MutableProperty<String?>(nil)
     
     init(coreDataManager: CoreDataManager) {
         
@@ -37,7 +38,7 @@ extension RatingComposerViewControllerViewModel {
     
     func saveRating() -> SignalProducer<Bool, NoError> {
         
-        let rating = Rating.make(from: coreDataManager!.persistentContainer.viewContext, score: selectedRating.value!)
+        let rating = Rating.make(from: coreDataManager!.persistentContainer.viewContext, score: selectedRating.value!, description: ratingDescription.value)
         
         return store(rating, using: coreDataManager!.persistentContainer.viewContext)
         

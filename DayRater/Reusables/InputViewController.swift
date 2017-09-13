@@ -13,8 +13,8 @@ import Result
 
 class InputViewController: UIViewController, KeyboardInputEventHandler {
     
-    var scrollView: UIScrollView!
-    var scrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
     var willShowKeyboardDisposable: Disposable!
     var didHideKeyboardDisposable: Disposable!
@@ -39,9 +39,19 @@ class InputViewController: UIViewController, KeyboardInputEventHandler {
     
     func willShowKeyboard(from results: Result<Notification, NoError>) {
         
+        guard let keyboardSize = results.value?.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? CGSize else {
+            
+            return
+            
+        }
+        
+        scrollViewBottomConstraint.constant = keyboardSize.height
+        
     }
     
     func didHideKeyboard(from results: Result<Notification, NoError>) {
+        
+        scrollViewBottomConstraint.constant = 0
         
     }
     

@@ -12,14 +12,14 @@ import ReactiveCocoa
 import ReactiveSwift
 import Result
 
-class RatingComposerViewController: UIViewController {
+class RatingComposerViewController: InputViewController {
 
     var viewModel: RatingComposerViewControllerViewModel!
     
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet var containerViewHeight: NSLayoutConstraint!
     var collectionView: UICollectionView!
     var ratingSelectorView: RatingComposerSelectorView = RatingComposerSelectorView.viewFor(nibName: "RatingComposerSelectorView")
     var descriptionTextView: RatingComposerTextView = RatingComposerTextView.viewFor(nibName: "RatingComposerTextView")
@@ -68,7 +68,10 @@ class RatingComposerViewController: UIViewController {
         collectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         collectionView.dataSource = self
         
-        containerView.layout(views: [collectionView, ratingSelectorView, descriptionTextView], for: .vertical, sidePadding: 5)
+        ratingSelectorView.restorationIdentifier = "RatingSelectorView"
+        descriptionTextView.restorationIdentifier = "DescriptionTextView"
+        
+        containerView.layout(views: [collectionView, ratingSelectorView, descriptionTextView], for: .vertical, topPadding: 10, sidePadding: 10)
         
         ratingSelectorView.negativeButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
@@ -81,12 +84,31 @@ class RatingComposerViewController: UIViewController {
             self?.viewModel.selectedRating.value = 1
 
         }
+        
+        descriptionTextView.textView.text = viewModel.ratingDescription.value
 
     }
     
     fileprivate func bindViewModel() {
         
         saveBarButtonItem.reactive.isEnabled <~ viewModel.ratingValidation
+        
+        viewModel.ratingDescription <~ descriptionTextView.textView.reactive.continuousTextValues.skipNil()
+        
+    }
+    
+    override func willShowKeyboard(from results: Result<Notification, NoError>) {
+        super.willShowKeyboard(from: results)
+        
+        containerViewHeight.constant = scrollViewBottomConstraint.constant
+        
+        
+    }
+    
+    override func didHideKeyboard(from results: Result<Notification, NoError>) {
+        super.didHideKeyboard(from: results)
+        
+        containerViewHeight.constant = 0
         
     }
 

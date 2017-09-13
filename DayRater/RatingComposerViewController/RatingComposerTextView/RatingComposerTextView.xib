@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yty-jc-AXM">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                    <rect key="frame" x="5" y="0.0" width="370" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -28,20 +28,30 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cI-Zk-50g">
+                    <rect key="frame" x="5" y="26" width="370" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Yty-jc-AXM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0xm-YW-6Uh"/>
+                <constraint firstItem="Yty-jc-AXM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="0xm-YW-6Uh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5cI-Zk-50g" secondAttribute="trailing" id="6AT-b6-qrT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3kG-Cm-Ijs" secondAttribute="bottom" id="9GY-11-YED"/>
+                <constraint firstItem="5cI-Zk-50g" firstAttribute="top" secondItem="Yty-jc-AXM" secondAttribute="bottom" constant="5" id="Doe-M4-kdg"/>
                 <constraint firstItem="3kG-Cm-Ijs" firstAttribute="top" secondItem="Yty-jc-AXM" secondAttribute="bottom" id="L5O-l3-rFM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3kG-Cm-Ijs" secondAttribute="trailing" id="XUQ-Kh-14P"/>
                 <constraint firstItem="3kG-Cm-Ijs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Yjw-Gl-J7N"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Yty-jc-AXM" secondAttribute="trailing" id="jwt-zG-5Sz"/>
                 <constraint firstItem="Yty-jc-AXM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="k1A-mb-Kvk"/>
+                <constraint firstItem="5cI-Zk-50g" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="u8H-7s-mjl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="placeholderTextLabel" destination="5cI-Zk-50g" id="BUo-cx-fqN"/>
                 <outlet property="textView" destination="3kG-Cm-Ijs" id="F5R-EE-a0j"/>
                 <outlet property="titleLabel" destination="Yty-jc-AXM" id="txr-kx-q3u"/>
             </connections>

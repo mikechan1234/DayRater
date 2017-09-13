@@ -78,26 +78,32 @@ class RatingHistoryViewController: UIViewController {
         
         viewModel.didChangeObjectSignal.observeValues { [unowned self] (object, atIndexPath, type, newIndexPath) in
             
+            if let indexPath = newIndexPath, self.viewModel.numberOfItems(for: indexPath.section) == 1 {
+                self.collectionView.reloadData()
+                return
+            }
+
             switch type {
-                
+
             case .delete:
                 self.collectionView.deleteItems(at: [atIndexPath!])
                 break
-                
+
             case .insert:
+
                 self.collectionView.insertItems(at: [newIndexPath!])
                 break
-                
+
             case .move:
                 self.collectionView.moveItem(at: atIndexPath!, to: newIndexPath!)
                 break
-                
+
             case .update:
                 self.collectionView.reloadItems(at: [atIndexPath!])
                 break
-                
+
             }
-            
+
         }
         
         viewModel.didChangeSectionInfoSignal.observeValues {[unowned self] (sectionInfo, sectionIndex, type) in
