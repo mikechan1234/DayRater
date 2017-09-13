@@ -1,3 +1,3 @@
 # DayRater
 Core Data + MVVM Project
-Xcode 9 Beta + Swift 4
+Xcode 9 + Swift 4
