@@ -45,11 +45,55 @@
                         <outlet property="collectionView" destination="3ZF-uA-SgN" id="crt-2J-xkq"/>
                         <outlet property="composeBarButtonItem" destination="nPq-Lz-pS0" id="9oL-lP-lPo"/>
                         <segue destination="yIb-EG-UVN" kind="show" identifier="toRatingComposer" id="K6i-uk-B6e"/>
+                        <segue destination="JWh-n3-nSX" kind="show" identifier="toRatingDetails" id="Kmv-pl-NOp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="226" y="-169"/>
+        </scene>
+        <!--Rating Details View Controller-->
+        <scene sceneID="77O-MO-Gdb">
+            <objects>
+                <viewController id="JWh-n3-nSX" customClass="RatingDetailsViewController" customModule="DayRater" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LzQ-Ps-ZC5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNB-O9-FfM">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="690" translatesAutoresizingMaskIntoConstraints="NO" id="7HX-T8-qO2">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7HX-T8-qO2" secondAttribute="trailing" id="7Of-96-ifE"/>
+                                    <constraint firstItem="7HX-T8-qO2" firstAttribute="leading" secondItem="aNB-O9-FfM" secondAttribute="leading" id="SmN-8q-mkg"/>
+                                    <constraint firstItem="7HX-T8-qO2" firstAttribute="top" secondItem="aNB-O9-FfM" secondAttribute="top" id="fwD-N2-fcf"/>
+                                    <constraint firstItem="7HX-T8-qO2" firstAttribute="width" secondItem="aNB-O9-FfM" secondAttribute="width" id="oFd-fD-gzY"/>
+                                    <constraint firstAttribute="bottom" secondItem="7HX-T8-qO2" secondAttribute="bottom" id="qzs-mr-Ugd"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ryp-dd-frL" firstAttribute="trailing" secondItem="aNB-O9-FfM" secondAttribute="trailing" id="3dg-VT-IYn"/>
+                            <constraint firstItem="aNB-O9-FfM" firstAttribute="leading" secondItem="Ryp-dd-frL" secondAttribute="leading" id="PWy-D9-aNA"/>
+                            <constraint firstItem="aNB-O9-FfM" firstAttribute="top" secondItem="Ryp-dd-frL" secondAttribute="top" id="rfA-41-KLt"/>
+                            <constraint firstItem="Ryp-dd-frL" firstAttribute="bottom" secondItem="aNB-O9-FfM" secondAttribute="bottom" id="xYh-XG-ybB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ryp-dd-frL"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="7HX-T8-qO2" id="sWk-Lx-tTy"/>
+                        <outlet property="scrollView" destination="aNB-O9-FfM" id="aaX-wZ-0dr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e6a-Bi-8GI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1017" y="185"/>
         </scene>
         <!--Rating Composer View Controller-->
         <scene sceneID="iLK-WX-9SZ">

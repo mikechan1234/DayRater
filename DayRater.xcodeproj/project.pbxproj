@@ -38,6 +38,7 @@
 		4CA52C0A1F469EB1008A2B3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA52C081F469EB1008A2B3C /* LaunchScreen.storyboard */; };
 		4CC993CB1F4C0C3B00D74E72 /* Rating+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C91F4C0C3B00D74E72 /* Rating+CoreDataClass.swift */; };
 		4CC993DA1F4C147E00D74E72 /* Rating+CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993D91F4C147E00D74E72 /* Rating+CoreDataFunctions.swift */; };
+		4CDD33C01F6A5F0B00783618 /* RatingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD33BF1F6A5F0B00783618 /* RatingDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		4CA52C0B1F469EB1008A2B3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CC993C91F4C0C3B00D74E72 /* Rating+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4CC993D91F4C147E00D74E72 /* Rating+CoreDataFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataFunctions.swift"; sourceTree = "<group>"; };
+		4CDD33BF1F6A5F0B00783618 /* RatingDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,17 +198,18 @@
 			isa = PBXGroup;
 			children = (
 				4CA52BFC1F469EB1008A2B3C /* AppDelegate.swift */,
-				4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */,
-				4CA52C001F469EB1008A2B3C /* Main.storyboard */,
-				4CA52C081F469EB1008A2B3C /* LaunchScreen.storyboard */,
-				4C348AD11F5FE1BD0019669D /* RatingComposerViewController */,
-				4CC993DB1F4C16CA00D74E72 /* RatingHistoryViewController */,
-				4CC993C81F4C0BA100D74E72 /* Core Data */,
-				4C5F28391F6252DD006BA1B7 /* Extensions */,
-				4C1C1D4B1F67DA0F00FCB1AF /* Reusables */,
-				4CA52C0B1F469EB1008A2B3C /* Info.plist */,
 				4CA52C061F469EB1008A2B3C /* Assets.xcassets */,
+				4CC993C81F4C0BA100D74E72 /* Core Data */,
+				4C43D6E21F4BDEBF00F907FB /* CoreDataManager.swift */,
+				4C5F28391F6252DD006BA1B7 /* Extensions */,
 				4C43D6E91F4BE41100F907FB /* Frameworks */,
+				4CA52C0B1F469EB1008A2B3C /* Info.plist */,
+				4CA52C081F469EB1008A2B3C /* LaunchScreen.storyboard */,
+				4CA52C001F469EB1008A2B3C /* Main.storyboard */,
+				4C348AD11F5FE1BD0019669D /* RatingComposerViewController */,
+				4CDD33C11F6A5F1400783618 /* RatingDetailsViewController */,
+				4CC993DB1F4C16CA00D74E72 /* RatingHistoryViewController */,
+				4C1C1D4B1F67DA0F00FCB1AF /* Reusables */,
 			);
 			path = DayRater;
 			sourceTree = "<group>";
@@ -231,6 +234,14 @@
 				4C5F28401F626C76006BA1B7 /* RatingHistoryCollectionViewCell */,
 			);
 			path = RatingHistoryViewController;
+			sourceTree = "<group>";
+		};
+		4CDD33C11F6A5F1400783618 /* RatingDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4CDD33BF1F6A5F0B00783618 /* RatingDetailsViewController.swift */,
+			);
+			path = RatingDetailsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 			files = (
 				4C43D6E71F4BDFFE00F907FB /* RatingHistoryViewControllerViewModel.swift in Sources */,
 				4C348AD01F5FE1B60019669D /* RatingComposerViewController.swift in Sources */,
+				4CDD33C01F6A5F0B00783618 /* RatingDetailsViewController.swift in Sources */,
 				4C43D6E31F4BDEBF00F907FB /* CoreDataManager.swift in Sources */,
 				4C5F28451F62735B006BA1B7 /* RatingHistoryHeaderCollectionReusableView.swift in Sources */,
 				4C8DA4621F67921600C0EC6F /* RatingComposerTextView.swift in Sources */,
