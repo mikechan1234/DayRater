@@ -57,7 +57,6 @@ extension RatingComposerViewControllerViewModel {
             do {
                 
                 try context.save()
-                
                 observer.send(value: true)
                 
             } catch {

@@ -29,8 +29,8 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cI-Zk-50g">
-                    <rect key="frame" x="5" y="26" width="370" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="5" y="29" width="370" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -40,7 +40,7 @@
                 <constraint firstItem="Yty-jc-AXM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="0xm-YW-6Uh"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5cI-Zk-50g" secondAttribute="trailing" id="6AT-b6-qrT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3kG-Cm-Ijs" secondAttribute="bottom" id="9GY-11-YED"/>
-                <constraint firstItem="5cI-Zk-50g" firstAttribute="top" secondItem="Yty-jc-AXM" secondAttribute="bottom" constant="5" id="Doe-M4-kdg"/>
+                <constraint firstItem="5cI-Zk-50g" firstAttribute="top" secondItem="Yty-jc-AXM" secondAttribute="bottom" constant="8" id="Doe-M4-kdg"/>
                 <constraint firstItem="3kG-Cm-Ijs" firstAttribute="top" secondItem="Yty-jc-AXM" secondAttribute="bottom" id="L5O-l3-rFM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3kG-Cm-Ijs" secondAttribute="trailing" id="XUQ-Kh-14P"/>
                 <constraint firstItem="3kG-Cm-Ijs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Yjw-Gl-J7N"/>

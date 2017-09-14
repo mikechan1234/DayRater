@@ -19,13 +19,18 @@ class RatingComposerSelectorView: UIView {
         super.awakeFromNib()
         
         negativeButton.setTitle("👎", for: .normal)
+        negativeButton.backgroundColor = .lightGray
+        negativeButton.layer.cornerRadius = 3.0
+        
         positiveButton.setTitle("👍", for: .normal)
+        positiveButton.backgroundColor = .lightGray
+        positiveButton.layer.cornerRadius = 3.0
         
     }
     
     override var intrinsicContentSize: CGSize {
         
-        return CGSize(width: UIViewNoIntrinsicMetric, height: 50)
+        return CGSize(width: UIViewNoIntrinsicMetric, height: 70)
         
     }
 

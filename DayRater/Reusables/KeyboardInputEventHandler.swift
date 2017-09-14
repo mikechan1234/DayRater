@@ -16,10 +16,10 @@ protocol KeyboardInputEventHandler {
     var scrollView: UIScrollView! {get set}
     var scrollViewBottomConstraint: NSLayoutConstraint! {get set}
     
-    var willShowKeyboardDisposable: Disposable! {get set}
-    var didHideKeyboardDisposable: Disposable! {get set}
+    var didShowKeyboardDisposable: Disposable! {get set}
+    var willHideKeyboardDisposable: Disposable! {get set}
     
-    func willShowKeyboard(from results: Result<Notification, NoError>)
-    func didHideKeyboard(from results: Result<Notification, NoError>)
+    func didShowKeyboard(from results: Result<Notification, NoError>)
+    func willHideKeyboard(from results: Result<Notification, NoError>)
     
 }

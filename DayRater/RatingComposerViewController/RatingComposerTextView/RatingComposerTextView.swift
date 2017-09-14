@@ -22,17 +22,13 @@ class RatingComposerTextView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleLabel.text = "Description"
+        titleLabel.text = "Comments"
+        titleLabel.font = .boldSystemFont(ofSize: 17)
         
+        placeholderTextLabel.text = "Optional"        
+        placeholderTextLabel.font = .systemFont(ofSize: 14, weight: .medium)
         placeholderTextLabel.textColor = .lightGray
         placeholderTextLabel.isUserInteractionEnabled = false
-        
-        bindSignals()
-        
-    }
-    
-    fileprivate func bindSignals() {
-    
         placeholderTextLabel.reactive.isHidden <~ textView.reactive.continuousTextValues.map { (text) -> Bool in
             
             guard let characterCount = text?.characters.count else {
@@ -44,7 +40,7 @@ class RatingComposerTextView: UIView {
             return characterCount > 0
             
         }
-    
+        
     }
     
 }

@@ -20,7 +20,21 @@ class RatingComposerViewController: InputViewController {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet var containerViewHeight: NSLayoutConstraint!
-    var collectionView: UICollectionView!
+    var collectionView: UICollectionView! = {
+       
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = 0
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        collectionView.isPagingEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
+        
+        return collectionView
+        
+    }()
     var ratingSelectorView: RatingComposerSelectorView = RatingComposerSelectorView.viewFor(nibName: "RatingComposerSelectorView")
     var descriptionTextView: RatingComposerTextView = RatingComposerTextView.viewFor(nibName: "RatingComposerTextView")
     
@@ -30,13 +44,14 @@ class RatingComposerViewController: InputViewController {
 
         setupViews()
         bindViewModel()
+        
     }
     
     fileprivate func setupViews() {
         
-        title = "Rate Your Day"
+        title = "Rate My Day"
         navigationItem.largeTitleDisplayMode = .never
-        
+                
         saveBarButtonItem.reactive.pressed = CocoaAction(Action<Void, Void, NoError>(execute: {[weak self] () -> SignalProducer<Void, NoError> in
 
             guard let weakSelf = self else {
@@ -61,26 +76,22 @@ class RatingComposerViewController: InputViewController {
         
         scrollView.isScrollEnabled = false
         
-        let flowLayout = UICollectionViewFlowLayout()
-        
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName: "RatingComposerStatusCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RatingComposerStatusCollectionViewCell")
         
-        ratingSelectorView.restorationIdentifier = "RatingSelectorView"
-        descriptionTextView.restorationIdentifier = "DescriptionTextView"
-        
-        containerView.layout(views: [collectionView, ratingSelectorView, descriptionTextView], for: .vertical, topPadding: 10, sidePadding: 10)
+        containerView.layout(views: [collectionView, ratingSelectorView, descriptionTextView], for: .vertical, topPadding: 10, bottomPadding: 10, sidePadding: 10, interitemPadding: 10)
         
         ratingSelectorView.negativeButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
+            self?.collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredVertically, animated: true)
             self?.viewModel.selectedRating.value = 0
 
         }
 
         ratingSelectorView.positiveButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
+            self?.collectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: .centeredVertically, animated: true)
             self?.viewModel.selectedRating.value = 1
 
         }
@@ -97,19 +108,18 @@ class RatingComposerViewController: InputViewController {
         
     }
     
-    override func willShowKeyboard(from results: Result<Notification, NoError>) {
-        super.willShowKeyboard(from: results)
+    override func didShowKeyboard(from results: Result<Notification, NoError>) {
+        super.didShowKeyboard(from: results)
         
         containerViewHeight.constant = scrollViewBottomConstraint.constant
         
-        
     }
     
-    override func didHideKeyboard(from results: Result<Notification, NoError>) {
-        super.didHideKeyboard(from: results)
+    override func willHideKeyboard(from results: Result<Notification, NoError>) {
+        super.willHideKeyboard(from: results)
         
         containerViewHeight.constant = 0
-        
+                
     }
 
 }
@@ -124,13 +134,27 @@ extension RatingComposerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 0
+        return 3
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RatingComposerStatusCollectionViewCell", for: indexPath) as! RatingComposerStatusCollectionViewCell
+        
+        switch indexPath.row {
+        case 0:
+            cell.configure(for: .question)
+            break
+        case 1:
+            cell.configure(for: .negative)
+            break
+        case 2:
+            cell.configure(for: .positive)
+            break
+        default:
+            break
+        }
         
         return cell
         
@@ -140,7 +164,11 @@ extension RatingComposerViewController: UICollectionViewDataSource {
 
 extension RatingComposerViewController: UICollectionViewDelegateFlowLayout {
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: collectionView.bounds.width, height: 100)
+        
+    }
     
 }
 
