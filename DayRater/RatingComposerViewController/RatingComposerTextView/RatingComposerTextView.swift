@@ -15,6 +15,17 @@ import Result
 class RatingComposerTextView: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var titleHeightConstraint: NSLayoutConstraint!
+    
+    var hideTitle: Bool = false {
+        
+        didSet {
+            
+            titleHeightConstraint.constant = hideTitle ? 0 : 21
+            
+        }
+        
+    }
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var placeholderTextLabel: UILabel!

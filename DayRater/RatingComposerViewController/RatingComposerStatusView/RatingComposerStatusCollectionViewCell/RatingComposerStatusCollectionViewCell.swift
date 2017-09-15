@@ -38,15 +38,15 @@ extension RatingComposerStatusCollectionViewCell {
         switch state {
             
         case .question:
-            statusTextLabel.text = "How are you doing today?"
+            statusTextLabel.text = "🤔"
             break
             
         case .negative:
-            statusTextLabel.text = "Ok 😐"
+            statusTextLabel.text = "😐"
             break
             
         case .positive:
-            statusTextLabel.text = "Good 😁"
+            statusTextLabel.text = "😁"
             break
             
         }

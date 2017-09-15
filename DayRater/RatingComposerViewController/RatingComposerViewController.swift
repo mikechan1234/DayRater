@@ -20,21 +20,8 @@ class RatingComposerViewController: InputViewController {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet var containerViewHeight: NSLayoutConstraint!
-    var collectionView: UICollectionView! = {
-       
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 0
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = .clear
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        collectionView.isPagingEnabled = true
-        collectionView.showsVerticalScrollIndicator = false
-        
-        return collectionView
-        
-    }()
+    
+    var statusView: RatingComposerStatusView = RatingComposerStatusView.viewFor(nibName: "RatingComposerStatusView")
     var ratingSelectorView: RatingComposerSelectorView = RatingComposerSelectorView.viewFor(nibName: "RatingComposerSelectorView")
     var descriptionTextView: RatingComposerTextView = RatingComposerTextView.viewFor(nibName: "RatingComposerTextView")
     
@@ -76,28 +63,27 @@ class RatingComposerViewController: InputViewController {
         
         scrollView.isScrollEnabled = false
         
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(UINib(nibName: "RatingComposerStatusCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RatingComposerStatusCollectionViewCell")
-        
-        containerView.layout(views: [collectionView, ratingSelectorView, descriptionTextView], for: .vertical, topPadding: 10, bottomPadding: 10, sidePadding: 10, interitemPadding: 10)
+        statusView.collectionView.dataSource = self
+        statusView.collectionView.delegate = self
+        descriptionTextView.hideTitle = true
+        descriptionTextView.textView.text = viewModel.ratingDescription.value
         
         ratingSelectorView.negativeButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
-            self?.collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredVertically, animated: true)
+            self?.statusView.collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredVertically, animated: true)
             self?.viewModel.selectedRating.value = 0
 
         }
 
         ratingSelectorView.positiveButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
-            self?.collectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: .centeredVertically, animated: true)
+            self?.statusView.collectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: .centeredVertically, animated: true)
             self?.viewModel.selectedRating.value = 1
 
         }
         
-        descriptionTextView.textView.text = viewModel.ratingDescription.value
-
+        containerView.layout(views: [statusView, descriptionTextView], for: .vertical, topPadding: 10, bottomPadding: 10, sidePadding: 10, interitemPadding: 10)
+        
     }
     
     fileprivate func bindViewModel() {
@@ -164,9 +150,7 @@ extension RatingComposerViewController: UICollectionViewDataSource {
 
 extension RatingComposerViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: collectionView.bounds.width, height: 100)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
     

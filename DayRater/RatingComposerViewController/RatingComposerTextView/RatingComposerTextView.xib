@@ -17,6 +17,9 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yty-jc-AXM">
                     <rect key="frame" x="5" y="0.0" width="370" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Et5-XN-Lrx"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -53,6 +56,7 @@
             <connections>
                 <outlet property="placeholderTextLabel" destination="5cI-Zk-50g" id="BUo-cx-fqN"/>
                 <outlet property="textView" destination="3kG-Cm-Ijs" id="F5R-EE-a0j"/>
+                <outlet property="titleHeightConstraint" destination="Et5-XN-Lrx" id="HHp-jT-XDB"/>
                 <outlet property="titleLabel" destination="Yty-jc-AXM" id="txr-kx-q3u"/>
             </connections>
             <point key="canvasLocation" x="-24.5" y="166"/>
