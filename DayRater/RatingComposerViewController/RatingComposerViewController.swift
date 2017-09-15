@@ -22,9 +22,8 @@ class RatingComposerViewController: InputViewController {
     @IBOutlet var containerViewHeight: NSLayoutConstraint!
     
     var statusView: RatingComposerStatusView = RatingComposerStatusView.viewFor(nibName: "RatingComposerStatusView")
-    var ratingSelectorView: RatingComposerSelectorView = RatingComposerSelectorView.viewFor(nibName: "RatingComposerSelectorView")
     var descriptionTextView: RatingComposerTextView = RatingComposerTextView.viewFor(nibName: "RatingComposerTextView")
-    
+    var composerAccessoryView: RatingComposerInputAccessoryView = RatingComposerInputAccessoryView.viewFor(nibName: "RatingComposerInputAccessoryView")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +31,18 @@ class RatingComposerViewController: InputViewController {
         setupViews()
         bindViewModel()
         
+    }
+    
+    override var inputAccessoryView: UIView? {
+        
+        return composerAccessoryView
+        
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        
+        return true
+    
     }
     
     fileprivate func setupViews() {
@@ -68,14 +79,14 @@ class RatingComposerViewController: InputViewController {
         descriptionTextView.hideTitle = true
         descriptionTextView.textView.text = viewModel.ratingDescription.value
         
-        ratingSelectorView.negativeButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
+        composerAccessoryView.negativeButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
             self?.statusView.collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredVertically, animated: true)
             self?.viewModel.selectedRating.value = 0
 
         }
 
-        ratingSelectorView.positiveButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
+        composerAccessoryView.positiveButton.reactive.controlEvents(.touchUpInside).observeResult {[weak self] (result) in
 
             self?.statusView.collectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: .centeredVertically, animated: true)
             self?.viewModel.selectedRating.value = 1
@@ -83,7 +94,6 @@ class RatingComposerViewController: InputViewController {
         }
         
         containerView.layout(views: [statusView, descriptionTextView], for: .vertical, topPadding: 10, bottomPadding: 10, sidePadding: 10, interitemPadding: 10)
-        
     }
     
     fileprivate func bindViewModel() {
@@ -93,6 +103,8 @@ class RatingComposerViewController: InputViewController {
         viewModel.ratingDescription <~ descriptionTextView.textView.reactive.continuousTextValues.skipNil()
         
     }
+    
+    //MARK: KeyboardInputEventHandler functions
     
     override func didShowKeyboard(from results: Result<Notification, NoError>) {
         super.didShowKeyboard(from: results)

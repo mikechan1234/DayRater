@@ -40,6 +40,8 @@
 		4CC993DA1F4C147E00D74E72 /* Rating+CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993D91F4C147E00D74E72 /* Rating+CoreDataFunctions.swift */; };
 		4CD9054E1F6B6A0200A8D528 /* RatingComposerStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9054D1F6B6A0200A8D528 /* RatingComposerStatusView.swift */; };
 		4CD905511F6B6A1A00A8D528 /* RatingComposerStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD905501F6B6A1A00A8D528 /* RatingComposerStatusView.xib */; };
+		4CD905531F6B847800A8D528 /* RatingComposerInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD905521F6B847800A8D528 /* RatingComposerInputAccessoryView.swift */; };
+		4CD905561F6B84EC00A8D528 /* RatingComposerInputAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD905551F6B84EC00A8D528 /* RatingComposerInputAccessoryView.xib */; };
 		4CDD33C01F6A5F0B00783618 /* RatingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD33BF1F6A5F0B00783618 /* RatingDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		4CC993D91F4C147E00D74E72 /* Rating+CoreDataFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataFunctions.swift"; sourceTree = "<group>"; };
 		4CD9054D1F6B6A0200A8D528 /* RatingComposerStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingComposerStatusView.swift; sourceTree = "<group>"; };
 		4CD905501F6B6A1A00A8D528 /* RatingComposerStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingComposerStatusView.xib; sourceTree = "<group>"; };
+		4CD905521F6B847800A8D528 /* RatingComposerInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingComposerInputAccessoryView.swift; sourceTree = "<group>"; };
+		4CD905551F6B84EC00A8D528 /* RatingComposerInputAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingComposerInputAccessoryView.xib; sourceTree = "<group>"; };
 		4CDD33BF1F6A5F0B00783618 /* RatingDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +114,7 @@
 			children = (
 				4C348ACF1F5FE1B60019669D /* RatingComposerViewController.swift */,
 				4C1556DB1F5FF8D8005005CC /* RatingComposerViewControllerViewModel.swift */,
+				4CD905541F6B847D00A8D528 /* RatingComposerInputAccessoryView */,
 				4CD9054F1F6B6A0700A8D528 /* RatingComposerStatusView */,
 				4C8DA4601F6791C200C0EC6F /* RatingComposerSelectorView */,
 				4C8DA4631F67921D00C0EC6F /* RatingComposerTextView */,
@@ -250,6 +255,15 @@
 			path = RatingComposerStatusView;
 			sourceTree = "<group>";
 		};
+		4CD905541F6B847D00A8D528 /* RatingComposerInputAccessoryView */ = {
+			isa = PBXGroup;
+			children = (
+				4CD905521F6B847800A8D528 /* RatingComposerInputAccessoryView.swift */,
+				4CD905551F6B84EC00A8D528 /* RatingComposerInputAccessoryView.xib */,
+			);
+			path = RatingComposerInputAccessoryView;
+			sourceTree = "<group>";
+		};
 		4CDD33C11F6A5F1400783618 /* RatingDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C8DA4671F6797D900C0EC6F /* RatingComposerTextView.xib in Resources */,
+				4CD905561F6B84EC00A8D528 /* RatingComposerInputAccessoryView.xib in Resources */,
 				4C5F28461F62735B006BA1B7 /* RatingHistoryHeaderCollectionReusableView.xib in Resources */,
 				4C8DA4651F67934100C0EC6F /* RatingComposerSelectorView.xib in Resources */,
 				4C5F283F1F626C6B006BA1B7 /* RatingHistoryCollectionViewCell.xib in Resources */,
@@ -365,6 +380,7 @@
 				4C348AD01F5FE1B60019669D /* RatingComposerViewController.swift in Sources */,
 				4CDD33C01F6A5F0B00783618 /* RatingDetailsViewController.swift in Sources */,
 				4C43D6E31F4BDEBF00F907FB /* CoreDataManager.swift in Sources */,
+				4CD905531F6B847800A8D528 /* RatingComposerInputAccessoryView.swift in Sources */,
 				4C5F28451F62735B006BA1B7 /* RatingHistoryHeaderCollectionReusableView.swift in Sources */,
 				4CD9054E1F6B6A0200A8D528 /* RatingComposerStatusView.swift in Sources */,
 				4C8DA4621F67921600C0EC6F /* RatingComposerTextView.swift in Sources */,

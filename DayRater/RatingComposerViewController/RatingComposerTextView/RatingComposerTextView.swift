@@ -36,7 +36,7 @@ class RatingComposerTextView: UIView {
         titleLabel.text = "Comments"
         titleLabel.font = .boldSystemFont(ofSize: 17)
         
-        placeholderTextLabel.text = "Optional"        
+        placeholderTextLabel.text = "Add your thoughts here"        
         placeholderTextLabel.font = .systemFont(ofSize: 14, weight: .medium)
         placeholderTextLabel.textColor = .lightGray
         placeholderTextLabel.isUserInteractionEnabled = false
@@ -51,6 +51,8 @@ class RatingComposerTextView: UIView {
             return characterCount > 0
             
         }
+        
+        textView.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         
     }
     

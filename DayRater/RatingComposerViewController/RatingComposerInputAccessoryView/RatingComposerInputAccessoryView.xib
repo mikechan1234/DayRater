@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RatingComposerInputAccessoryView" customModule="DayRater" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjF-cM-h2a">
+                    <rect key="frame" x="305" y="7" width="30" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="👎"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcu-3W-kNZ">
+                    <rect key="frame" x="340" y="7" width="30" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="👍"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yjF-cM-h2a" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="4T4-2E-772"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Bcu-3W-kNZ" secondAttribute="trailing" constant="5" id="5Vp-li-4ES"/>
+                <constraint firstItem="Bcu-3W-kNZ" firstAttribute="leading" secondItem="yjF-cM-h2a" secondAttribute="trailing" constant="5" id="Oa1-Hb-li7"/>
+                <constraint firstItem="Bcu-3W-kNZ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="z05-EV-Ycg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="negativeButton" destination="yjF-cM-h2a" id="Np0-b6-vbV"/>
+                <outlet property="positiveButton" destination="Bcu-3W-kNZ" id="sex-rt-UwM"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="367"/>
+        </view>
+    </objects>
+</document>

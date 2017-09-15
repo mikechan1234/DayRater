@@ -16,14 +16,18 @@ class InputViewController: UIViewController, KeyboardInputEventHandler {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
+    var willShowKeyboardDisposable: Disposable!
     var didShowKeyboardDisposable: Disposable!
     var willHideKeyboardDisposable: Disposable!
+    var didHideKeyboardDisposable: Disposable!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        willShowKeyboardDisposable = NotificationCenter.default.reactive.notifications(forName: .UIKeyboardWillShow).observeResult(willShowKeyboard)
         didShowKeyboardDisposable = NotificationCenter.default.reactive.notifications(forName: .UIKeyboardDidShow).observeResult(didShowKeyboard)
         willHideKeyboardDisposable = NotificationCenter.default.reactive.notifications(forName: .UIKeyboardWillHide).observeResult(willHideKeyboard)
+        didHideKeyboardDisposable = NotificationCenter.default.reactive.notifications(forName: .UIKeyboardDidHide).observeResult(didHideKeyboard)
         
     }
     
@@ -37,6 +41,10 @@ class InputViewController: UIViewController, KeyboardInputEventHandler {
     
     //MARK: KeyboardInputEventHandler
 
+    func willShowKeyboard(from results: Result<Notification, NoError>) {
+        
+    }
+    
     /// Updates the scrollViewBottomConstraint based on the safeArea
     ///
     /// - Parameter results: Notification Result with NoError
@@ -56,6 +64,10 @@ class InputViewController: UIViewController, KeyboardInputEventHandler {
         
         scrollViewBottomConstraint.constant = 0
 
+    }
+    
+    func didHideKeyboard(from results: Result<Notification, NoError>) {
+        
     }
     
 }
